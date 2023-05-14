@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<h3> Yönetici Kontrol Paneli </h3>
+<small> {{session["username"]}} , Hoşgeldiniz </small>
+<hr>
+
+<a href = "addproduct" class =" btn btn-dark"> Ekle </a>
+
+
+{% if products %}
+
+  
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Ürün </th>
+        <th scope="col">Tür</th>
+        <th scope="col">Tarih</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+
+      </tr>
+    </thead>
+    <tbody>
+
+        {% for product in products  %}
+        <tr>
+            <th scope = "row">{{product.id}}</th>
+            <td><a href = "/product/{{product.id}}">{{product.title}}</td>
+            <td>{{product.type}}</td>
+            <td>{{product.created_date}}</td>
+            <td><a href = "/edit/{{product.id}}" class = "btn btn-danger"> Güncelle/Düzenle - Beta </a></td>
+            <td><a href = "/delete/{{product.id}}" class = "btn btn-danger"> Sil - Beta  </a></td>
+        {% endfor %}
+
+
+    </tbody>
+  </table>
+
+{% else %}
+<hr>
+<hr>
+<div class = "alert alert-danger">"Blog Yazılarını görüntülemek için "Blog Yazıları" sekmesine gidin. " </div>
+
+
+{% endif %}
+
+
+{% endblock body %}

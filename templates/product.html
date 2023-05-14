@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block body %}
+{% if product %}
+
+<h4> {{product.title}}</h4>
+<hr> 
+Kullanıcı : {{product.type}}
+<hr> 
+Tarih : {{product.created_date}}
+<hr>
+{{product.content | safe}}
+
+
+{% else %}
+
+<div class = "alert alert-warning">
+    Ürün Bulunamadı..
+</div>
+
+{% endif %}
+
+
+
+{% endblock body %}
